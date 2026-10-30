@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="arbitrary_bot_ecosystem/arbitrary_bot_ecosystem.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
