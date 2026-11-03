@@ -3,4 +3,7 @@
     <Build />
     <Deploy />
   </Project>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
 </Solution>
