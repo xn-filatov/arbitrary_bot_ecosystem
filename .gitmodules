@@ -1,9 +1,6 @@
 [submodule "arbitrary_bot_ecosystem/src/data_retriever"]
 	path = arbitrary_bot_ecosystem/src/data_retriever
 	url = https://github.com/xn-filatov/etcd_data_retriever.git
-[submodule "arbitrary_bot_ecosystem/src/apis"]
-	path = arbitrary_bot_ecosystem/src/apis
-	url = https://github.com/xn-filatov/etcd_market_apis.git
 [submodule "arbitrary_bot_ecosystem/src/balances_retriever"]
 	path = arbitrary_bot_ecosystem/src/balances_retriever
 	url = https://github.com/xn-filatov/etcd_balances_retriever.git
