@@ -1,6 +1,5 @@
 <Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.6165494">
   <ItemGroup>
-    <Folder Include="src\arbitrary_bot\libs\" />
     <Folder Include="src\balances_retriever\libs\market_apis\" />
   </ItemGroup>
 </Project>
