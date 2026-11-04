@@ -11,12 +11,37 @@ services:
       - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
     volumes:
       - etcd_data:/bitnami/etcd
+  
+  etcd-workbench:
+    image: tzfun/etcd-workbench:latest
+    container_name: etcd-workbench
+    restart: unless-stopped
+    ports:
+      - "8002:8002"
+    # depends_on:
+    #   etcd:
+    #     condition: service_healthy
 
-  arbitrary-bot:
-    container_name: arbitrary-bot
+
+  arbitrary_bot:
+    container_name: arbitrary_bot
     build:
       context: .
       dockerfile: arbitrary_bot_ecosystem/src/arbitrary_bot/Dockerfile
+    # depends_on:
+    #   etcd:
+    #     condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  balances_retriever:
+    container_name: balances_retriever
+    build:
+      context: .
+      dockerfile: arbitrary_bot_ecosystem/src/balances_retriever/Dockerfile
+    # depends_on:
+    #   etcd:
+    #     condition: service_healthy
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
