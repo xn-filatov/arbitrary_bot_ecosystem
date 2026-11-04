@@ -16,7 +16,7 @@ services:
     container_name: arbitrary-bot
     build:
       context: .
-      dockerfile: arbitrary_bot_ecosystem/src/etcd_arbitrary_bot/Dockerfile
+      dockerfile: arbitrary_bot_ecosystem/src/arbitrary_bot/Dockerfile
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
