@@ -27,6 +27,33 @@ services:
     build:
       context: .
       dockerfile: arbitrary_bot_ecosystem/src/balances_retriever/Dockerfile
+    environment:
+        # ETCD
+      - ETCD_URL=${ETCD_URL}
+      - ETCD_PORT=${ETCD_PORT}
+      - ETCD_PUT_TIMEOUT=${ETCD_PUT_TIMEOUT}
+
+        # HUOBI
+      - HUOBI_ACCESS_KEY=${HUOBI_ACCESS_KEY}
+      - HUOBI_SECRET_KEY=${HUOBI_SECRET_KEY}
+      - HUOBI_ACCOUNT_ID=${HUOBI_ACCOUNT_ID}
+        
+        # BITCOM
+      - BITCOM_ACCESS_KEY=${BITCOM_ACCESS_KEY}
+      - BITCOM_SECRET_KEY=${BITCOM_SECRET_KEY}
+        
+        # EXMO
+      - EXMO_ACCESS_KEY=${EXMO_ACCESS_KEY}
+      - EXMO_SECRET_KEY=${EXMO_SECRET_KEY}
+        
+        # OKX
+      - OKX_ACCESS_KEY=${OKX_ACCESS_KEY}
+      - OKX_SECRET_KEY=${OKX_SECRET_KEY}
+      - OKX_PASSPHRASE=${OKX_PASSPHRASE}
+        
+        # MEXC
+      - MEXC_ACCESS_KEY=${MEXC_ACCESS_KEY}
+      - MEXC_SECRET_KEY=${MEXC_SECRET_KEY}
     # depends_on:
     #   etcd:
     #     condition: service_healthy
@@ -38,22 +65,58 @@ services:
     build:
       context: .
       dockerfile: arbitrary_bot_ecosystem/src/data_retriever/Dockerfile
+    environment:
+        # ETCD
+      - ETCD_URL=${ETCD_URL}
+      - ETCD_PORT=${ETCD_PORT}
+      - ETCD_PUT_TIMEOUT=${ETCD_PUT_TIMEOUT}
     # depends_on:
     #   etcd:
     #     condition: service_healthy
     extra_hosts:
       - "host.docker.internal:host-gateway"
   
-  # arbitrary_bot:
-  #   container_name: arbitrary_bot
-  #   build:
-  #     context: .
-  #     dockerfile: arbitrary_bot_ecosystem/src/arbitrary_bot/Dockerfile
-  #   # depends_on:
-  #   #   etcd:
-  #   #     condition: service_healthy
-  #   extra_hosts:
-  #     - "host.docker.internal:host-gateway"
+  arbitrary_bot:
+    container_name: arbitrary_bot
+    build:
+      context: .
+      dockerfile: arbitrary_bot_ecosystem/src/arbitrary_bot/Dockerfile
+    environment:
+        # ETCD
+      - ETCD_URL=${ETCD_URL}
+      - ETCD_PORT=${ETCD_PORT}
+
+      - ETCD_ARBITRARY_KEY=symbols/TONUSDT/arbitrage
+      - ETCD_PREFERENCES_KEY=user/preferences
+      - ETCD_BALANCE_KEY=user/balances
+      - ETCD_SYMBOLS_KEY=user/market_symbols
+
+        # HUOBI
+      - HUOBI_ACCESS_KEY=${HUOBI_ACCESS_KEY}
+      - HUOBI_SECRET_KEY=${HUOBI_SECRET_KEY}
+      - HUOBI_ACCOUNT_ID=${HUOBI_ACCOUNT_ID}
+        
+        # BITCOM
+      - BITCOM_ACCESS_KEY=${BITCOM_ACCESS_KEY}
+      - BITCOM_SECRET_KEY=${BITCOM_SECRET_KEY}
+        
+        # EXMO
+      - EXMO_ACCESS_KEY=${EXMO_ACCESS_KEY}
+      - EXMO_SECRET_KEY=${EXMO_SECRET_KEY}
+        
+        # OKX
+      - OKX_ACCESS_KEY=${OKX_ACCESS_KEY}
+      - OKX_SECRET_KEY=${OKX_SECRET_KEY}
+      - OKX_PASSPHRASE=${OKX_PASSPHRASE}
+        
+        # MEXC
+      - MEXC_ACCESS_KEY=${MEXC_ACCESS_KEY}
+      - MEXC_SECRET_KEY=${MEXC_SECRET_KEY}
+    # depends_on:
+    #   etcd:
+    #     condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 volumes:
   etcd_data:

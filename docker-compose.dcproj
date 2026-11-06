@@ -8,6 +8,7 @@
     <DockerComposeProjectName>arbitrary_bot_ecosystem</DockerComposeProjectName>
   </PropertyGroup>
   <ItemGroup>
+    <None Include=".env" />
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>
