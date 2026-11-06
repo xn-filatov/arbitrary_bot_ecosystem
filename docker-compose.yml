@@ -33,24 +33,22 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
+  data_retriever:
+    container_name: data_retriever
+    build:
+      context: .
+      dockerfile: arbitrary_bot_ecosystem/src/data_retriever/Dockerfile
+    # depends_on:
+    #   etcd:
+    #     condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  
   # arbitrary_bot:
   #   container_name: arbitrary_bot
   #   build:
   #     context: .
   #     dockerfile: arbitrary_bot_ecosystem/src/arbitrary_bot/Dockerfile
-  #   # depends_on:
-  #   #   etcd:
-  #   #     condition: service_healthy
-  #   extra_hosts:
-  #     - "host.docker.internal:host-gateway"
-
-
-
-  # data_retriever:
-  #   container_name: data_retriever
-  #   build:
-  #     context: .
-  #     dockerfile: arbitrary_bot_ecosystem/src/data_retriever/Dockerfile
   #   # depends_on:
   #   #   etcd:
   #   #     condition: service_healthy
